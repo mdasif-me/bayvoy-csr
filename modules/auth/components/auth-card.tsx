@@ -28,8 +28,8 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
         layout
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ 
-          duration: 0.5, 
+        transition={{
+          duration: 0.5,
           ease: "easeOut",
           layout: { duration: 0.3 }
         }}
@@ -89,7 +89,7 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
         {/* Forms */}
         <div className="relative">
           <AnimatePresence mode="wait">
-            <motion.div 
+            <motion.div
               key={mode}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
