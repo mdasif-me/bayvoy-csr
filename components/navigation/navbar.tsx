@@ -40,9 +40,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center group relative">
-            <div className={`w-16 h-16 sm:w-20 sm:h-20 relative transition-all duration-500 transform group-hover:scale-110 ${
-              isScrolled ? "brightness-100 drop-shadow-md" : "brightness-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          <Link href="/" className="flex items-center gap-2 group relative z-50">
+            <div className={`w-16 h-16 sm:w-24 sm:h-24 relative transition-all duration-500 transform group-hover:scale-110 ${
+              isScrolled ? "brightness-100 drop-shadow-md" : "brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
             }`}>
               <Image 
                 src="/logo/favicon.png" 
@@ -52,6 +52,9 @@ const Navbar = () => {
                 priority
               />
             </div>
+            <span className={`text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
+              BayVoy
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}

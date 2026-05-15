@@ -85,7 +85,7 @@ const Footer = () => {
             className="space-y-8"
           >
             <Link href="/" className="relative flex items-center group/logo w-fit">
-              <div className="w-24 h-24 relative transition-all duration-500 transform group-hover/logo:scale-110 drop-shadow-[0_0_15px_rgba(14,165,233,0.2)]">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 relative transition-all duration-500 transform group-hover/logo:scale-110 drop-shadow-[0_0_20px_rgba(14,165,233,0.3)]">
                 <Image 
                   src="/logo/favicon.png" 
                   alt="BayVoy" 
@@ -93,6 +93,7 @@ const Footer = () => {
                   className="object-contain" 
                 />
               </div>
+              <span className="text-4xl font-bold tracking-tighter ml-2">BayVoy</span>
             </Link>
             <p className="text-primary-foreground/70 leading-relaxed text-lg">
               Your trusted travel partner for unforgettable adventures around
