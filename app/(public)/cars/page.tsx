@@ -63,7 +63,7 @@ const CarsPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <main className="flex-grow max-w-[1400px] mx-auto w-full px-4 sm:px-6 pt-28 pb-20">
+      <main className="grow max-w-[1400px] mx-auto w-full px-4 sm:px-6 pt-28 pb-20">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,8 +79,8 @@ const CarsPage = () => {
 
         <div className="flex flex-col lg:flex-row gap-10">
           {/* SIDEBAR: Filters */}
-          <aside className="w-full lg:w-80 flex-shrink-0">
-            <div className="sticky top-28 space-y-8 bg-white p-8 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50">
+          <aside className="w-full lg:w-80 shrink-0">
+            <div className="sticky top-28 space-y-8 bg-white p-8 rounded-4xl border border-slate-100 shadow-xl shadow-slate-200/50">
               {/* Type Filter */}
               <div className="space-y-4">
                 <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
@@ -111,20 +111,20 @@ const CarsPage = () => {
                 <div className="flex flex-wrap gap-2">
                   <Link href="/cars">
                     <Badge
-                        variant={filters.fuel === "all" ? "default" : "outline"}
-                        className={`cursor-pointer px-4 py-1.5 rounded-lg text-[11px] font-bold transition-all ${filters.fuel === 'all' ? 'bg-[#0ea5e9]' : ''}`}
+                      variant={filters.fuel === "all" ? "default" : "outline"}
+                      className={`cursor-pointer px-4 py-1.5 rounded-lg text-[11px] font-bold transition-all ${filters.fuel === 'all' ? 'bg-[#0ea5e9]' : ''}`}
                     >
-                        All Systems
+                      All Systems
                     </Badge>
                   </Link>
                   {dynamicFuels.map((f: string) => (
                     <Link key={f} href={`/cars?fuel=${f}`}>
-                        <Badge
+                      <Badge
                         variant={filters.fuel === f ? "default" : "outline"}
                         className={`cursor-pointer px-4 py-1.5 rounded-lg text-[11px] font-bold transition-all ${filters.fuel === f ? 'bg-[#0ea5e9]' : ''}`}
-                        >
+                      >
                         {f}
-                        </Badge>
+                      </Badge>
                     </Link>
                   ))}
                 </div>
@@ -132,11 +132,11 @@ const CarsPage = () => {
 
               <Link href="/cars" className="block">
                 <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full text-slate-400 hover:text-red-500 rounded-xl text-xs h-10 border border-dashed border-slate-200 transition-all"
+                  variant="ghost"
+                  size="sm"
+                  className="w-full text-slate-400 hover:text-red-500 rounded-xl text-xs h-10 border border-dashed border-slate-200 transition-all"
                 >
-                    <RotateCcw size={14} className="mr-2" /> Reset Filters
+                  <RotateCcw size={14} className="mr-2" /> Reset Filters
                 </Button>
               </Link>
             </div>
@@ -152,7 +152,7 @@ const CarsPage = () => {
                 </span>
               </div>
             ) : vehicles.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-20 px-6 text-center bg-white rounded-[2rem] border border-dashed border-slate-200">
+              <div className="flex flex-col items-center justify-center py-20 px-6 text-center bg-white rounded-4xl border border-dashed border-slate-200">
                 <div className="bg-blue-50 p-6 rounded-full mb-6 text-[#0ea5e9]">
                   <CarFront size={48} />
                 </div>
@@ -161,12 +161,12 @@ const CarsPage = () => {
                   We couldn't find any vehicles with these specific filters. Try adjusting your search!
                 </p>
                 <Link href="/cars">
-                    <Button
+                  <Button
                     variant="outline"
                     className="rounded-2xl px-8 font-bold border-2 border-slate-100"
-                    >
+                  >
                     Clear All Filters
-                    </Button>
+                  </Button>
                 </Link>
               </div>
             ) : (
@@ -193,20 +193,19 @@ const CarsPage = () => {
 const FilterButton = ({ label, active, href }: { label: string, active: boolean, href: string }) => (
   <Link href={href} className="w-full">
     <button
-        className={`w-full py-2.5 rounded-xl text-[11px] font-bold capitalize transition-all border ${
-        active
-            ? "bg-[#0ea5e9] text-white border-[#0ea5e9] shadow-lg shadow-blue-100 scale-[1.02]"
-            : "bg-white text-slate-400 border-slate-100 hover:bg-slate-50"
+      className={`w-full py-2.5 rounded-xl text-[11px] font-bold capitalize transition-all border ${active
+        ? "bg-[#0ea5e9] text-white border-[#0ea5e9] shadow-lg shadow-blue-100 scale-[1.02]"
+        : "bg-white text-slate-400 border-slate-100 hover:bg-slate-50"
         }`}
     >
-        {label}
+      {label}
     </button>
   </Link>
 );
 
 const VehicleCard = ({ vehicle }: any) => (
   <motion.div variants={itemVariants}>
-    <Card className="overflow-hidden border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 group rounded-[2rem] h-full flex flex-col bg-white">
+    <Card className="overflow-hidden border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 group rounded-4xl h-full flex flex-col bg-white">
       <div className="relative h-64 overflow-hidden">
         <img
           src={vehicle.images?.[0] || "/images/placeholder.jpg"}
@@ -222,7 +221,7 @@ const VehicleCard = ({ vehicle }: any) => (
         </div>
       </div>
 
-      <CardContent className="p-8 flex flex-col flex-grow space-y-6">
+      <CardContent className="p-8 flex flex-col grow space-y-6">
         <div className="flex justify-between items-start gap-2">
           <div>
             <h2 className="text-2xl font-black tracking-tight group-hover:text-[#0ea5e9] transition-colors line-clamp-1 text-slate-900">
@@ -251,11 +250,10 @@ const VehicleCard = ({ vehicle }: any) => (
 
         <div className="flex items-center justify-between pt-2 mt-auto">
           <Badge
-            className={`px-4 py-1.5 rounded-full font-bold text-[10px] uppercase tracking-widest ${
-              vehicle.isAvailable
-                ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
-                : "bg-slate-50 text-slate-400 border border-slate-100"
-            }`}
+            className={`px-4 py-1.5 rounded-full font-bold text-[10px] uppercase tracking-widest ${vehicle.isAvailable
+              ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
+              : "bg-slate-50 text-slate-400 border border-slate-100"
+              }`}
           >
             {vehicle.isAvailable ? "Ready to Rent" : "Booked"}
           </Badge>

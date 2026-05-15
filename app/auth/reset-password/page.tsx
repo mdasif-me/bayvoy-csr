@@ -5,12 +5,19 @@ import { Lock, Eye, EyeOff, CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+import { motion } from "framer-motion";
+
 export default function ResetPasswordPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="min-h-screen flex items-center justify-center gradient-sky px-4 font-dm">
-      <div className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-md rounded-[2.5rem] p-10 shadow-lg animate-scale-in">
+      <motion.div 
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-xl rounded-[2.5rem] p-12 shadow-lg"
+      >
         <div className="text-center mb-8">
           <div className="mx-auto w-16 h-16 bg-ocean-light rounded-2xl flex items-center justify-center mb-4">
             <Lock className="text-ocean w-8 h-8" />
@@ -61,7 +68,7 @@ export default function ResetPasswordPage() {
             Update Password
           </Button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

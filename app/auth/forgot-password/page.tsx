@@ -5,10 +5,17 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+import { motion } from "framer-motion";
+
 export default function ForgotPasswordPage() {
   return (
     <div className="min-h-screen flex items-center justify-center gradient-sky px-4 font-dm">
-      <div className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-md rounded-[2.5rem] p-10 shadow-lg animate-scale-in">
+      <motion.div 
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-xl rounded-[2.5rem] p-12 shadow-lg"
+      >
         <div className="text-center mb-8">
           <div className="mb-6 flex justify-center">
             <Link href="/" className="flex items-center gap-2 group">
@@ -49,7 +56,7 @@ export default function ForgotPasswordPage() {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

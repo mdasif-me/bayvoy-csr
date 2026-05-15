@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { KeyRound, Timer } from "lucide-react";
 import Link from "next/link";
 
+import { motion } from "framer-motion";
+
 export default function VerifyOtpPage() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [timer, setTimer] = useState(59);
@@ -37,7 +39,12 @@ export default function VerifyOtpPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center gradient-sky px-4 font-dm">
-      <div className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-md rounded-[2.5rem] p-10 shadow-lg animate-scale-in">
+      <motion.div 
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-xl rounded-[2.5rem] p-12 shadow-lg"
+      >
         <div className="text-center mb-8">
           <div className="mx-auto w-16 h-16 bg-ocean-light rounded-2xl flex items-center justify-center mb-4">
             <KeyRound className="text-ocean w-8 h-8" />
@@ -84,7 +91,7 @@ export default function VerifyOtpPage() {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
