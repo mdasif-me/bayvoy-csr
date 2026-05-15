@@ -40,14 +40,14 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "backdrop-blur-xl bg-white/80 shadow-md py-4"
-          : "bg-transparent py-6"
+        ? "backdrop-blur-xl bg-white/80 shadow-md py-4"
+        : "bg-transparent py-6"
         }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-0 group">
             <div className={`w-14 h-14 relative transition-all ${isScrolled ? "brightness-100" : "brightness-110"}`}>
               <Image src="/images/icon/tranfarent_icon.png" alt="BayVoy" fill className="object-contain" />
             </div>
