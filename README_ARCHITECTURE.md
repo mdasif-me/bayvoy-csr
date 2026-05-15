@@ -1,3 +1,4 @@
+```
 Frontend Architecture
 app/
 ├── (public)/
@@ -233,4 +234,4 @@ styles/
 ├── globals.css
 ├── theme.css
 └── scrollbar.css
-
+```
