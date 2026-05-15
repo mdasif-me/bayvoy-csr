@@ -40,18 +40,17 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="relative flex items-center group/logo w-fit">
-            <div className="w-20 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover/logo:scale-105">
+          <Link href="/" className="flex items-center gap-2 group/logo w-fit">
+            <div className="w-16 h-10 sm:w-20 sm:h-12 relative flex items-center justify-center transition-transform duration-300 group-hover/logo:scale-105">
               <Image
                 src="/images/icon/tranfarent_icon.png"
                 alt="BayVoy"
-                width={80}
-                height={40}
+                fill
                 className="object-contain"
                 priority
               />
             </div>
-            <span className={`absolute ml-14 text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
+            <span className={`text-2xl sm:text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
               BayVoy
             </span>
           </Link>
