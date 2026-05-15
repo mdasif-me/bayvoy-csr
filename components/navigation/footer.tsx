@@ -85,15 +85,27 @@ const Footer = () => {
             className="space-y-8"
           >
             <Link href="/" className="relative flex items-center group/logo w-fit">
-              <div className="w-20 h-20 sm:w-28 sm:h-28 relative transition-all duration-500 transform group-hover/logo:scale-110 drop-shadow-[0_0_20px_rgba(14,165,233,0.3)]">
-                <Image 
-                  src="/logo/favicon.png" 
-                  alt="BayVoy" 
-                  fill 
-                  className="object-contain" 
-                />
+              <div className="relative">
+                <div className="w-20 h-20 sm:w-28 sm:h-28 relative transition-all duration-500 transform group-hover/logo:scale-110 drop-shadow-[0_0_20px_rgba(14,165,233,0.3)]">
+                  <Image 
+                    src="/logo/favicon.png" 
+                    alt="BayVoy" 
+                    fill 
+                    className="object-contain" 
+                  />
+                </div>
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute -top-1 -right-1 w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full p-1.5 shadow-xl border border-slate-100"
+                >
+                  <Image src="/logo/earth.svg" alt="Earth Icon" fill className="object-contain p-1" />
+                </motion.div>
               </div>
-              <span className="text-4xl font-bold tracking-tighter ml-2">BayVoy</span>
+              <div className="flex flex-col ml-3">
+                <span className="text-4xl font-bold tracking-tighter">BayVoy</span>
+                <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Explore The World</span>
+              </div>
             </Link>
             <p className="text-primary-foreground/70 leading-relaxed text-lg">
               Your trusted travel partner for unforgettable adventures around

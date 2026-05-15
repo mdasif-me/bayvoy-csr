@@ -40,21 +40,36 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group relative z-50">
-            <div className={`w-16 h-16 sm:w-24 sm:h-24 relative transition-all duration-500 transform group-hover:scale-110 ${
-              isScrolled ? "brightness-100 drop-shadow-md" : "brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-            }`}>
-              <Image 
-                src="/logo/favicon.png" 
-                alt="BayVoy" 
-                fill 
-                className="object-contain" 
-                priority
-              />
+          <Link href="/" className="flex items-center gap-3 group relative z-50">
+            <div className="relative">
+              <div className={`w-16 h-16 sm:w-24 sm:h-24 relative transition-all duration-500 transform group-hover:scale-110 ${
+                isScrolled ? "brightness-100 drop-shadow-md" : "brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+              }`}>
+                <Image 
+                  src="/logo/favicon.png" 
+                  alt="BayVoy" 
+                  fill 
+                  className="object-contain" 
+                  priority
+                />
+              </div>
+              {/* Floating Icon Logo */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full p-1 shadow-lg hidden sm:block border border-slate-100"
+              >
+                <Image src="/logo/earth.svg" alt="Earth" fill className="object-contain p-1" />
+              </motion.div>
             </div>
-            <span className={`text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
-              BayVoy
-            </span>
+            <div className="flex flex-col -gap-1">
+              <span className={`text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
+                BayVoy
+              </span>
+              <span className={`text-[10px] font-bold uppercase tracking-[0.2em] opacity-60 transition-colors ${isScrolled ? "text-slate-500" : "text-white/60"}`}>
+                Travel & Tours
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav Links */}
