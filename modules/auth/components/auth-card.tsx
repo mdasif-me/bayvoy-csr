@@ -25,14 +25,9 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center gradient-sky px-4 font-dm overflow-hidden">
       <motion.div
-        layout
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{
-          duration: 0.5,
-          ease: "easeOut",
-          layout: { duration: 0.3 }
-        }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-xl rounded-[2.5rem] p-12 shadow-[0_8px_40px_rgba(0,0,0,0.12)] relative overflow-hidden"
       >
         {/* Header */}
