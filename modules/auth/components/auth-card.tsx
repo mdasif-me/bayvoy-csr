@@ -6,7 +6,8 @@ import { Mail, Lock, Eye, EyeOff, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 interface AuthCardProps {
   initialMode?: "login" | "register";
@@ -22,12 +23,17 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
   }, [initialMode]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center gradient-sky px-4 font-dm">
+    <div className="min-h-screen flex items-center justify-center gradient-sky px-4 font-dm overflow-hidden">
       <motion.div
+        layout
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-xl rounded-[2.5rem] p-12 shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+          layout: { duration: 0.3 }
+        }}
+        className="bg-white/95 backdrop-blur-2xl border border-white/60 w-full max-w-xl rounded-[2.5rem] p-12 shadow-[0_8px_40px_rgba(0,0,0,0.12)] relative overflow-hidden"
       >
         {/* Header */}
         <div className="text-center mb-6">
@@ -39,24 +45,14 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
               <span className="text-xl font-black text-slate-900 tracking-tighter">BayVoy</span>
             </Link>
           </div>
-          <motion.h1
-            key={mode + "-title"}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-            className="text-2xl font-bold text-slate-900"
-          >
+          <h1 className="text-2xl font-bold text-slate-900">
             {mode === "login" ? "Welcome Back" : "Create Account"}
-          </motion.h1>
-          <motion.p
-            key={mode + "-subtitle"}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25, delay: 0.05 }}
-            className="text-sm text-slate-500 mt-1"
-          >
-            {mode === "login" ? "Login to continue your journey" : "Join us and start exploring"}
-          </motion.p>
+          </h1>
+          <p className="text-sm text-slate-500 mt-1">
+            {mode === "login"
+              ? "Login to continue your journey"
+              : "Join us and start exploring"}
+          </p>
         </div>
 
         {/* Tabs */}
@@ -67,6 +63,7 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
               mode === "register" && "translate-x-full"
             )}
           />
+
           <div className="relative flex">
             <button
               onClick={() => setMode("login")}
@@ -89,66 +86,75 @@ const AuthCard = ({ initialMode = "login" }: AuthCardProps) => {
           </div>
         </div>
 
-        {/* Forms — always rendered, Full Name shown/hidden via CSS only */}
-        <div className="space-y-4">
-          {/* Full Name — always in DOM, height animated */}
-          <div
-            className="overflow-hidden transition-all duration-300"
-            style={{ maxHeight: mode === "register" ? "64px" : "0px", opacity: mode === "register" ? 1 : 0 }}
-          >
-            <div className="relative pb-0.5">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-              <Input
-                type="text"
-                placeholder="Full Name"
-                className="pl-10 h-12 bg-muted/50 border-0 rounded-xl focus:ring-2 focus:ring-primary"
-              />
-            </div>
-          </div>
-
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-            <Input
-              type="email"
-              placeholder="Email"
-              className="pl-10 h-12 bg-muted/50 border-0 rounded-xl focus:ring-2 focus:ring-primary"
-            />
-          </div>
-
-          <div className="relative">
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-            <Input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              className="pl-10 pr-10 h-12 bg-muted/50 border-0 rounded-xl focus:ring-2 focus:ring-primary"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
+        {/* Forms */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={mode}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="space-y-4"
             >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
+              {mode === "register" && (
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                  <Input
+                    type="text"
+                    placeholder="Full Name"
+                    className="pl-10 h-12 bg-muted/50 border-0 rounded-xl focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+              )}
 
-          <Button variant="hero" size="lg" className="w-full" disabled={loading}>
-            {loading ? "Processing..." : mode === "login" ? "Login" : "Create Account"}
-          </Button>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  className="pl-10 h-12 bg-muted/50 border-0 rounded-xl focus:ring-2 focus:ring-primary"
+                />
+              </div>
 
-          {/* Forgot password — height animated */}
-          <div
-            className="overflow-hidden transition-all duration-300 text-center"
-            style={{ maxHeight: mode === "login" ? "32px" : "0px", opacity: mode === "login" ? 1 : 0 }}
-          >
-            <Link
-              href="/auth/forgot-password"
-              className="text-sm font-bold text-slate-400 hover:text-ocean transition-colors"
-            >
-              Forgot your password?
-            </Link>
-          </div>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  className="pl-10 pr-10 h-12 bg-muted/50 border-0 rounded-xl focus:ring-2 focus:ring-primary"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
 
-          {/* Or divider */}
+              <Button
+                variant="hero"
+                size="lg"
+                className="w-full"
+                disabled={loading}
+              >
+                {loading ? "Processing..." : mode === "login" ? "Login" : "Create Account"}
+              </Button>
+
+              {mode === "login" && (
+                <div className="text-center">
+                  <Link
+                    href="/auth/forgot-password"
+                    className="text-sm font-bold text-slate-400 hover:text-ocean transition-colors"
+                  >
+                    Forgot your password?
+                  </Link>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+
           <div className="relative py-2">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t border-slate-100"></span>
