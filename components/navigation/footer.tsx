@@ -4,7 +4,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Send,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,192 +29,230 @@ const YoutubeIcon = () => (
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-navy text-white overflow-hidden">
-      {/* Newsletter Section */}
-      <div className="relative border-b border-white/5">
-        <div className="absolute inset-0 bg-ocean/5 pointer-events-none" />
-        <div className="container mx-auto px-4 lg:px-8 py-16 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ocean/10 text-ocean text-sm font-medium mb-6 animate-fade-in">
-              <Send className="w-4 h-4" />
-              <span>Newsletter</span>
-            </div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
+    <footer id="contact" className="bg-navy text-primary-foreground">
+      {/* Newsletter */}
+      <div className="border-b border-primary-foreground/10">
+        <div className="container mx-auto px-4 lg:px-8 py-12">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Subscribe to Our Newsletter
             </h3>
-            <p className="text-white/60 mb-8 text-lg max-w-2xl mx-auto">
+            <p className="text-primary-foreground/70 mb-6">
               Get exclusive deals, travel tips, and destination guides delivered
               to your inbox.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <Input
                 type="email"
-                placeholder="Enter your email address"
-                className="flex-1 h-14 bg-white/5 border-white/10 text-white placeholder:text-white/40 rounded-2xl focus:border-ocean/50 focus:ring-ocean/20 transition-all"
+                placeholder="Enter your email"
+                className="flex-1 h-12 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 rounded-xl"
               />
-              <Button variant="ocean" size="xl" className="shadow-lg shadow-ocean/20">
+              <Button variant="ocean" size="lg">
                 Subscribe
               </Button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 lg:px-8 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
-          {/* Brand Column */}
-          <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-0 group">
-              <div className="w-14 h-14 relative transition-transform group-hover:scale-105 duration-300">
-                <Image 
-                  src="/images/icon/tranfarent_icon.png" 
-                  alt="BayVoy Logo" 
-                  fill 
-                  className="object-contain"
-                />
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="relative flex items-center mb-4">
+              <div className="w-20 h-10 rounded-xl flex items-center justify-center">
+                <Image src="/images/icon/tranfarent_icon.png" alt="bayvoy" width={80} height={40} className="object-contain" />
               </div>
-              <span className="text-3xl font-bold tracking-tighter">BayVoy</span>
+              <span className="absolute ml-14 text-2xl font-bold">BayVoy</span>
             </Link>
-            <p className="text-white/60 leading-relaxed text-lg">
+            <p className="text-primary-foreground/70 mb-6">
               Your trusted travel partner for unforgettable adventures around
-              the world. We make your dream journeys come true.
+              the world.
             </p>
             <div className="flex items-center gap-4">
-              {[
-                { Icon: FacebookIcon, href: "https://facebook.com" },
-                { Icon: InstagramIcon, href: "https://instagram.com" },
-                { Icon: TwitterIcon, href: "https://twitter.com" },
-                { Icon: YoutubeIcon, href: "https://youtube.com" },
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center hover:bg-ocean hover:text-white transition-all duration-300 border border-white/5 hover:border-ocean/30 group"
-                >
-                  <social.Icon />
-                </a>
-              ))}
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <FacebookIcon />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <TwitterIcon />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <YoutubeIcon />
+              </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-xl mb-8 relative inline-block">
-              Quick Links
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-ocean rounded-full" />
-            </h4>
-            <ul className="space-y-4">
-              {[
-                { name: "About Us", href: "/about" },
-                { name: "Destinations", href: "/destinations" },
-                { name: "Tour Packages", href: "/tours" },
-                { name: "Travel Blog", href: "/blog" },
-                { name: "Contact", href: "/contact" },
-                { name: "Become a Partner", href: "/become-partner" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-ocean transition-all duration-300 flex items-center group"
-                  >
-                    <span className="w-0 group-hover:w-4 h-0.5 bg-ocean mr-0 group-hover:mr-2 transition-all duration-300" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="font-bold text-lg mb-4">Quick Links</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/about"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/destinations"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Destinations
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tours"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Tour Packages
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Travel Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/become-partner"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Become a Partner
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Services Content */}
+          {/* Services */}
           <div>
-            <h4 className="font-bold text-xl mb-8 relative inline-block">
-              Our Services
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-ocean rounded-full" />
-            </h4>
-            <ul className="space-y-4">
-              {[
-                { name: "Hotel Booking", href: "/hotels" },
-                { name: "Car Rental", href: "/cars" },
-                { name: "Guided Tours", href: "/tours" },
-                { name: "Custom Packages", href: "/packages" },
-                { name: "Travel Insurance", href: "/insurance" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-ocean transition-all duration-300 flex items-center group"
-                  >
-                    <span className="w-0 group-hover:w-4 h-0.5 bg-ocean mr-0 group-hover:mr-2 transition-all duration-300" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="font-bold text-lg mb-4">Services</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/hotels"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Hotel Booking
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cars"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Car Rental
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tours"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Guided Tours
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/packages"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Custom Packages
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/insurance"
+                  className="text-primary-foreground/70 hover:text-primary transition-colors"
+                >
+                  Travel Insurance
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h4 className="font-bold text-xl mb-8 relative inline-block">
-              Contact Us
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-ocean rounded-full" />
-            </h4>
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-ocean/10 group-hover:border-ocean/20 transition-all duration-300">
-                  <MapPin className="w-6 h-6 text-ocean" />
-                </div>
-                <div className="pt-1">
-                  <p className="text-white/40 text-xs uppercase tracking-widest font-bold mb-1">Address</p>
-                  <span className="text-white/70">123 Travel Street, Dhaka 1000, Bangladesh</span>
-                </div>
+            <h4 className="font-bold text-lg mb-4">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <span className="text-primary-foreground/70">
+                  123 Travel Street, Dhaka 1000, Bangladesh
+                </span>
               </li>
-              <li className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-ocean/10 group-hover:border-ocean/20 transition-all duration-300">
-                  <Phone className="w-6 h-6 text-ocean" />
-                </div>
-                <div className="pt-1">
-                  <p className="text-white/40 text-xs uppercase tracking-widest font-bold mb-1">Phone</p>
-                  <span className="text-white/70">+880 1234 567890</span>
-                </div>
+              <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-primary-foreground/70">
+                  +880 1234 567890
+                </span>
               </li>
-              <li className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-ocean/10 group-hover:border-ocean/20 transition-all duration-300">
-                  <Mail className="w-6 h-6 text-ocean" />
-                </div>
-                <div className="pt-1">
-                  <p className="text-white/40 text-xs uppercase tracking-widest font-bold mb-1">Email</p>
-                  <span className="text-white/70">info@bayvoy.com</span>
-                </div>
+              <li className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-primary-foreground/70">
+                  info@bayvoy.com
+                </span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer Bar */}
-      <div className="border-t border-white/5 bg-black/20 backdrop-blur-sm">
-        <div className="container mx-auto px-4 lg:px-8 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-white/40 text-sm">
-              © {new Date().getFullYear()} <span className="text-white/60 font-bold">BayVoy</span>. All rights reserved.
-            </div>
-            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm">
-              {[
-                { name: "Privacy Policy", href: "/privacy" },
-                { name: "Terms of Service", href: "/terms" },
-                { name: "Cookie Policy", href: "/cookies" },
-              ].map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-white/40 hover:text-white transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
+      {/* Bottom Bar */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container mx-auto px-4 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-primary-foreground/60 text-sm">
+              © {new Date().getFullYear()} BayVoy. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6 text-sm">
+              <Link
+                href="/privacy"
+                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+              >
+                Terms of Service
+              </Link>
+              <Link
+                href="/cookies"
+                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+              >
+                Cookie Policy
+              </Link>
             </div>
           </div>
         </div>
