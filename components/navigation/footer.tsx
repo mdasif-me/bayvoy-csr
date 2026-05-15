@@ -12,56 +12,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
-// --- Constants ---
-
-const SOCIAL_LINKS = [
-  { 
-    name: "Facebook", 
-    href: "#", 
-    Icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-    ) 
-  },
-  { 
-    name: "Instagram", 
-    href: "#", 
-    Icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-    ) 
-  },
-  { 
-    name: "Twitter", 
-    href: "#", 
-    Icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-    ) 
-  },
-  { 
-    name: "Youtube", 
-    href: "#", 
-    Icon: () => (
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2 68.4 68.4 0 0 1 15 0 2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2 68.4 68.4 0 0 1-15 0 2 2 0 0 1-2-2Z"/><path d="m10 15 5-3-5-3z"/></svg>
-    ) 
-  },
-];
-
-const QUICK_LINKS = [
-  { name: "About Us", href: "/about" },
-  { name: "Destinations", href: "/destinations" },
-  { name: "Tour Packages", href: "/tours" },
-  { name: "Travel Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
-  { name: "Become a Partner", href: "/become-partner" },
-];
-
-const SERVICES = [
-  { name: "Hotel Booking", href: "/hotels" },
-  { name: "Car Rental", href: "/cars" },
-  { name: "Guided Tours", href: "/tours" },
-  { name: "Custom Packages", href: "/packages" },
-  { name: "Travel Insurance", href: "/insurance" },
-];
+import { 
+  QUICK_LINKS, 
+  SERVICES, 
+  SOCIAL_LINKS, 
+  LEGAL_LINKS 
+} from "@/constants/navigation";
 
 // --- Sub-components ---
 
@@ -260,14 +216,14 @@ const Footer = () => {
               <ArrowUp className="w-5 h-5 group-hover:animate-bounce" />
             </button>
 
-            <div className="flex items-center gap-8 text-sm">
-              {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item) => (
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-sm">
+              {LEGAL_LINKS.map((item) => (
                 <Link
-                  key={item}
-                  href={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="text-primary-foreground/50 hover:text-primary transition-colors flex items-center gap-1 group/link"
+                  key={item.name}
+                  href={item.href}
+                  className="text-primary-foreground/50 hover:text-white transition-colors flex items-center gap-1 group/link"
                 >
-                  {item}
+                  {item.name}
                   <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                 </Link>
               ))}
