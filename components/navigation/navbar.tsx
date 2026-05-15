@@ -40,13 +40,18 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-0 group">
-            <div className={`w-14 h-14 relative transition-all ${isScrolled ? "brightness-100" : "brightness-110"}`}>
-              <Image src="/images/icon/tranfarent_icon.png" alt="BayVoy" fill className="object-contain" />
+          <Link href="/" className="flex items-center group relative">
+            <div className={`w-16 h-16 sm:w-20 sm:h-20 relative transition-all duration-500 transform group-hover:scale-110 ${
+              isScrolled ? "brightness-100 drop-shadow-md" : "brightness-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+            }`}>
+              <Image 
+                src="/logo/favicon.png" 
+                alt="BayVoy" 
+                fill 
+                className="object-contain" 
+                priority
+              />
             </div>
-            <span className={`text-2xl font-bold transition-colors ${isScrolled ? "text-slate-900" : "text-white"}`}>
-              BayVoy
-            </span>
           </Link>
 
           {/* Desktop Nav Links */}

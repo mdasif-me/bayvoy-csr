@@ -23,7 +23,7 @@ const Hero = () => {
           <div className="text-center mb-8 animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
               Discover Your Dream
-              <span className="block mt-2 text-[#0ea5e9]">Destination</span>
+              <span className="block mt-2">Destination</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow">
               Book hotels, tours, and rent cars at the best prices.
