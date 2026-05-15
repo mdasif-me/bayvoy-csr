@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { NAV_LINKS } from "@/constants/navigation";
 
 const Navbar = () => {
@@ -41,36 +40,20 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group relative z-50">
-            <div className="relative">
-              <div className={`w-16 h-16 sm:w-24 sm:h-24 relative transition-all duration-500 transform group-hover:scale-110 ${
-                isScrolled ? "brightness-100 drop-shadow-md" : "brightness-110 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-              }`}>
-                <Image 
-                  src="/logo/favicon.png" 
-                  alt="BayVoy" 
-                  fill 
-                  className="object-contain" 
-                  priority
-                />
-              </div>
-              {/* Floating Icon Logo */}
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full p-1 shadow-lg hidden sm:block border border-slate-100"
-              >
-                <Image src="/logo/earth.svg" alt="Earth" fill className="object-contain p-1" />
-              </motion.div>
+          <Link href="/" className="relative flex items-center group/logo w-fit">
+            <div className="w-20 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover/logo:scale-105">
+              <Image
+                src="/images/icon/tranfarent_icon.png"
+                alt="BayVoy"
+                width={80}
+                height={40}
+                className="object-contain"
+                priority
+              />
             </div>
-            <div className="flex flex-col -gap-1">
-              <span className={`text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
-                BayVoy
-              </span>
-              <span className={`text-[10px] font-bold uppercase tracking-[0.2em] opacity-60 transition-colors ${isScrolled ? "text-slate-500" : "text-white/60"}`}>
-                Travel & Tours
-              </span>
-            </div>
+            <span className={`absolute ml-14 text-3xl font-bold tracking-tighter transition-colors duration-300 ${isScrolled ? "text-slate-900" : "text-white"}`}>
+              BayVoy
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}

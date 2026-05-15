@@ -12,11 +12,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { 
-  QUICK_LINKS, 
-  SERVICES, 
-  SOCIAL_LINKS, 
-  LEGAL_LINKS 
+import {
+  QUICK_LINKS,
+  SERVICES,
+  SOCIAL_LINKS,
+  LEGAL_LINKS
 } from "@/constants/navigation";
 
 // --- Sub-components ---
@@ -44,7 +44,7 @@ const Footer = () => {
       {/* Newsletter Section */}
       <div className="border-b border-primary-foreground/10 relative z-10">
         <div className="container mx-auto px-4 lg:px-8 py-16">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -75,9 +75,9 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
-          
+
           {/* Brand Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -85,27 +85,16 @@ const Footer = () => {
             className="space-y-8"
           >
             <Link href="/" className="relative flex items-center group/logo w-fit">
-              <div className="relative">
-                <div className="w-20 h-20 sm:w-28 sm:h-28 relative transition-all duration-500 transform group-hover/logo:scale-110 drop-shadow-[0_0_20px_rgba(14,165,233,0.3)]">
-                  <Image 
-                    src="/logo/favicon.png" 
-                    alt="BayVoy" 
-                    fill 
-                    className="object-contain" 
-                  />
-                </div>
-                <motion.div 
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute -top-1 -right-1 w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full p-1.5 shadow-xl border border-slate-100"
-                >
-                  <Image src="/logo/earth.svg" alt="Earth Icon" fill className="object-contain p-1" />
-                </motion.div>
+              <div className="w-20 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover/logo:scale-105">
+                <Image
+                  src="/images/icon/tranfarent_icon.png"
+                  alt="BayVoy"
+                  width={80}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
-              <div className="flex flex-col ml-3">
-                <span className="text-4xl font-bold tracking-tighter">BayVoy</span>
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Explore The World</span>
-              </div>
+              <span className="absolute ml-14 text-3xl font-bold tracking-tighter">BayVoy</span>
             </Link>
             <p className="text-primary-foreground/70 leading-relaxed text-lg">
               Your trusted travel partner for unforgettable adventures around
@@ -127,7 +116,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Quick Links Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -147,7 +136,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Services Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -167,7 +156,7 @@ const Footer = () => {
           </motion.div>
 
           {/* Contact Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -217,9 +206,9 @@ const Footer = () => {
             <div className="text-primary-foreground/50 text-sm">
               © {new Date().getFullYear()} <span className="text-primary-foreground/80 font-bold">BayVoy</span>. All rights reserved.
             </div>
-            
+
             {/* Scroll to top button */}
-            <button 
+            <button
               onClick={scrollToTop}
               className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 hover:-translate-y-2 group"
               aria-label="Back to top"
