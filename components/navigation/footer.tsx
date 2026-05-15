@@ -1,27 +1,78 @@
-import { Mail, Phone, MapPin, Globe, MessageCircle, Send, Camera } from "lucide-react";
-import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-10">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand Column */}
-          <div className="space-y-6">
-            <Link href="/" className="inline-block">
-              <div className="w-40 h-10 relative">
-                <Image src="/images/favicon.png" alt="BayVoy" fill className="object-contain brightness-200" />
-              </div>
-            </Link>
-            <p className="text-slate-400 leading-relaxed">
-              Discover your next adventure with BayVoy. We provide the best travel experiences, 
-              from tropical escapes to cultural journeys.
+    <footer id="contact" className="bg-navy text-white">
+      {/* Newsletter */}
+      <div className="border-b border-white/10">
+        <div className="container mx-auto px-4 lg:px-8 py-12">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Subscribe to Our Newsletter
+            </h3>
+            <p className="text-white/70 mb-6">
+              Get exclusive deals, travel tips, and destination guides delivered
+              to your inbox.
             </p>
-            <div className="flex gap-4">
-              {[MessageCircle, Send, Camera, Globe].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0ea5e9] transition-colors">
-                  <Icon className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 h-12 bg-white/10 border-white/20 text-white placeholder:text-white/50 rounded-xl"
+              />
+              <Button className="bg-ocean hover:bg-ocean/90 text-white h-12 px-8 rounded-xl">
+                Subscribe
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="space-y-6">
+            <Link href="/" className="relative flex items-center group">
+              <div className="w-14 h-14 relative">
+                <Image 
+                  src="/images/icon/tranfarent_icon.png" 
+                  alt="BayVoy" 
+                  fill 
+                  className="object-contain" 
+                />
+              </div>
+              <span className="text-2xl font-bold ml-2">BayVoy</span>
+            </Link>
+            <p className="text-white/70 leading-relaxed">
+              Your trusted travel partner for unforgettable adventures around
+              the world. Discover your next journey with us.
+            </p>
+            <div className="flex items-center gap-4">
+              {[
+                { Icon: Facebook, href: "#" },
+                { Icon: Instagram, href: "#" },
+                { Icon: Twitter, href: "#" },
+                { Icon: Youtube, href: "#" },
+              ].map(({ Icon, href }, index) => (
+                <a
+                  key={index}
+                  href={href}
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-ocean transition-all duration-300 group"
+                >
+                  <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 </a>
               ))}
             </div>
@@ -29,16 +80,23 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Quick Links</h4>
-            <ul className="space-y-4 text-slate-400">
+            <h4 className="font-bold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-4">
               {[
                 { name: "About Us", href: "/about" },
                 { name: "Destinations", href: "/destinations" },
-                { name: "Tours", href: "/tours" },
+                { name: "Tour Packages", href: "/tours" },
+                { name: "Travel Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="hover:text-white transition-colors">{item.name}</Link>
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-ocean transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-ocean/50" />
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -46,43 +104,76 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Services</h4>
-            <ul className="space-y-4 text-slate-400">
+            <h4 className="font-bold text-lg mb-6">Services</h4>
+            <ul className="space-y-4">
               {[
                 { name: "Hotel Booking", href: "/hotels" },
-                { name: "Tour Packages", href: "/tours" },
                 { name: "Car Rental", href: "/cars" },
-                { name: "Destination Guides", href: "/destinations" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="hover:text-white transition-colors">{item.name}</Link>
+                { name: "Guided Tours", href: "/tours" },
+                { name: "Custom Packages", href: "/packages" },
+                { name: "Travel Insurance", href: "/insurance" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-ocean transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-ocean/50" />
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact Us</h4>
-            <ul className="space-y-4 text-slate-400">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#0ea5e9] shrink-0" />
-                <span>123 Travel Street, Adventure City, World</span>
+            <h4 className="font-bold text-lg mb-6">Contact Us</h4>
+            <ul className="space-y-6">
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-ocean" />
+                </div>
+                <span className="text-white/70 pt-1">
+                  123 Travel Street, Dhaka 1000, Bangladesh
+                </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#0ea5e9] shrink-0" />
-                <span>+1 234 567 890</span>
+              <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-ocean" />
+                </div>
+                <span className="text-white/70">+880 1234 567890</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-[#0ea5e9] shrink-0" />
-                <span>hello@bayvoy.com</span>
+              <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-ocean/10 flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5 text-ocean" />
+                </div>
+                <span className="text-white/70">info@bayvoy.com</span>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} BayVoy. All rights reserved.</p>
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10 bg-black/20">
+        <div className="container mx-auto px-4 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-white/50 text-sm">
+              © {new Date().getFullYear()} BayVoy. All rights reserved.
+            </p>
+            <div className="flex items-center gap-8 text-sm">
+              <Link href="/privacy" className="text-white/50 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-white/50 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="/cookies" className="text-white/50 hover:text-white transition-colors">
+                Cookie Policy
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

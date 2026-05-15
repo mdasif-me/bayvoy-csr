@@ -60,7 +60,7 @@ export default function VerifyOtpPage() {
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className="w-12 h-14 text-center text-2xl font-bold bg-slate-50 border-0 rounded-2xl focus:ring-2 focus:ring-ocean transition-all outline-none text-slate-900"
+                className="w-12 h-14 text-center text-2xl font-bold bg-slate-100 border-0 rounded-2xl focus:ring-2 focus:ring-ocean transition-all outline-none text-slate-900"
               />
             ))}
           </div>

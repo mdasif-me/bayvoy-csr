@@ -79,6 +79,8 @@
   --color-ocean-dark: hsl(var(--ocean-dark));
   --color-sand: hsl(var(--sand));
   --color-sky: hsl(var(--sky));
+  --color-navy: hsl(var(--navy));
+  --color-navy-light: hsl(var(--navy-light));
   
   --font-dm: "DM Sans", sans-serif;
 

@@ -39,19 +39,21 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "backdrop-blur-xl bg-white/80 shadow-md py-4"
           : "bg-transparent py-6"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className={`w-32 sm:w-40 h-10 relative transition-all ${isScrolled ? "brightness-100" : "brightness-200"}`}>
-              <Image src="/images/favicon.png" alt="BayVoy" fill className="object-contain" />
+            <div className={`w-14 h-14 relative transition-all ${isScrolled ? "brightness-100" : "brightness-110"}`}>
+              <Image src="/images/icon/tranfarent_icon.png" alt="BayVoy" fill className="object-contain" />
             </div>
+            <span className={`text-2xl font-bold transition-colors ${isScrolled ? "text-slate-900" : "text-white"}`}>
+              BayVoy
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -60,9 +62,8 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`font-medium transition-colors ${navTextClass} ${
-                  pathname === link.href ? "text-[#0ea5e9]" : ""
-                }`}
+                className={`font-medium transition-colors ${navTextClass} ${pathname === link.href ? "text-[#0ea5e9]" : ""
+                  }`}
               >
                 {link.name}
               </Link>
@@ -100,9 +101,8 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`font-medium py-2 border-b border-slate-50 last:border-0 ${
-                    pathname === link.href ? "text-[#0ea5e9]" : "text-slate-900"
-                  }`}
+                  className={`font-medium py-2 border-b border-slate-50 last:border-0 ${pathname === link.href ? "text-[#0ea5e9]" : "text-slate-900"
+                    }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
@@ -110,15 +110,15 @@ const Navbar = () => {
               ))}
               <div className="pt-4 flex flex-col gap-3">
                 <Link href="/auth/login" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="outline" className="w-full rounded-xl py-6">
-                  Sign In
-                </Button>
-              </Link>
-              <Link href="/auth/register" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full bg-primary text-white rounded-xl py-6 shadow-lg shadow-primary/20">
-                  Register Now
-                </Button>
-              </Link>
+                  <Button variant="outline" className="w-full rounded-xl py-6">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link href="/auth/register" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="w-full bg-primary text-white rounded-xl py-6 shadow-lg shadow-primary/20">
+                    Register Now
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
