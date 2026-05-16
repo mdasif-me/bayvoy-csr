@@ -1,7 +1,3 @@
-/**
- * Global Types
- */
-
 export interface ApiResponse<T> {
   success: boolean;
   data?: T;
@@ -13,7 +9,7 @@ export interface PaginationParams {
   page: number;
   limit: number;
   sort?: string;
-  order?: "asc" | "desc";
+  order?: 'asc' | 'desc';
 }
 
 export interface PaginatedResponse<T> {
